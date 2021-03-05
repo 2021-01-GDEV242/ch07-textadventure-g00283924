@@ -51,7 +51,7 @@ public class Room
     {
         return description;
     }
-
+    
     /**
      * Return a description of the room in the form:
      *     You are in the kitchen.
