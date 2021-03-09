@@ -101,6 +101,14 @@ public class Game
     }
     
     /**
+     * command word to eat
+     */
+    private void eat()
+    {
+     System.out.println("You have eaten. You are no longer hungry.");   
+    }
+    
+    /**
      * Given a command, process (that is: execute) the command.
      * @param command The command to be processed.
      * @return true If the command ends the game, false otherwise.
@@ -126,6 +134,10 @@ public class Game
                 
             case LOOK:
                 look();
+                break;
+            
+            case EAT:
+                eat();
                 break;
 
             case QUIT:
