@@ -92,6 +92,14 @@ public class Game
         System.out.println(currentRoom.getLongDescription());
     }
 
+    /** 
+     * look command word 
+       */
+    private void look()
+    {
+        System.out.println(currentRoom.getLongDescription());
+    }
+    
     /**
      * Given a command, process (that is: execute) the command.
      * @param command The command to be processed.
@@ -114,6 +122,10 @@ public class Game
 
             case GO:
                 goRoom(command);
+                break;
+                
+            case LOOK:
+                look();
                 break;
 
             case QUIT:
