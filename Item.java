@@ -1,33 +1,41 @@
-
 /**
- * Avaliable ingame Item
+ * Create ingame Items for each room
  *
  * @author  Joan Amaury rosario
  * @version 2020.03.10
  */
-public class Item
-{
-    // instance variables - replace the example below with your own
-    private int x;
+public class Item {
+    
+  private String itemDescription;
+  private int itemWeight;
 
     /**
-     * Item Description
+     * Item description
+     * @param (description of the item, weight of the item)
      */
     public Item()
     {
-        // initialise instance variables
-        x = 0;
+     itemDescription = " " ;
+     itemWeight = 0;
+    }
+    
+    /**
+     * Creates an item for a room
+     * @param (description of the item, weight of the item)
+     */
+    public Item(String description, int weight)
+    {
+     itemDescription = description;
+     itemWeight = weight;
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * gets the description of an item
+     * @return itemInfo and the weight as a string
      */
-    public int sampleMethod(int y)
+    public String getItemDescription()
     {
-        // put your code here
-        return x + y;
+        String itemInfo ="Item name: "+this.itemDescription+"\t Weight: " + this.itemWeight;
+        return itemInfo;
     }
 }
