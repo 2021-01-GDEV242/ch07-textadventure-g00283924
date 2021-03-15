@@ -35,7 +35,7 @@ public class Item {
      */
     public String getItemDescription()
     {
-        String itemInfo ="Item name: "+this.itemDescription+"\t Weight: " + this.itemWeight;
+        String itemInfo ="Item name: "+this.itemDescription+ "Weight: " + this.itemWeight;
         return itemInfo;
     }
 }

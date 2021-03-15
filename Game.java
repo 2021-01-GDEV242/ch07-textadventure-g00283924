@@ -91,9 +91,17 @@ public class Game
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
     }
+    
+    /** 
+     * take command word that allows player to "pick up item"
+     */
+    private void take()
+    {
+       System.out.println("You have picked up an Item."); 
+    }
 
     /** 
-     * look command word 
+     * look command word that gives room description
        */
     private void look()
     {
@@ -101,7 +109,7 @@ public class Game
     }
     
     /**
-     * command word to eat
+     * command word to eat 
      */
     private void eat()
     {
@@ -139,7 +147,11 @@ public class Game
             case EAT:
                 eat();
                 break;
-
+            
+            case TAKE:
+                 take();
+                  break;
+                  
             case QUIT:
                 wantToQuit = quit(command);
                 break;
