@@ -19,7 +19,8 @@ import java.util.Iterator;
 public class Room 
 {
     private String description;
-    private HashMap<String, Room> exits;        // stores exits of this room.
+    private HashMap<String, Room> exits;
+    private HashMap<String, Item> items;// stores exits of this room.
 
     /**
      * Create a room described "description". Initially, it has
@@ -62,7 +63,20 @@ public class Room
     {
         return "You are " + description + ".\n" + getExitString();
     }
-
+    
+  /**
+     * returns a string descrbing the items within a room
+     */
+    private String getItemString()
+    {
+        String returnString = "Items in the room are: ";
+        Set<String> keys = items.keySet();
+        for(String item : keys) {
+            returnString +=" " + item;
+        }
+        return returnString;
+    }
+    
     /**
      * Return a string describing the room's exits, for example
      * "Exits: north west".
@@ -77,7 +91,24 @@ public class Room
         }
         return returnString;
     }
-
+    
+    /**
+     * add items to a room
+     */
+    public void addItem(String name, Item object)
+    {
+        items.put(name, object);
+    }
+    
+    /**
+     * A method that will remove items from the hashMap of items that
+     * the room holds
+     */
+    public void removeItem(String name)
+    {
+        items.remove(name);
+    }
+    
     /**
      * Return the room that is reached if we go from this room in direction
      * "direction". If there is no room in that direction, return null.
