@@ -35,15 +35,24 @@ public class Game
      */
     private void createRooms()
     {
-        Room outside, theater, pub, lab, office, pond;
+        Room outside, theater, pub, lab, office, pond, garden, 
+        pathway, further, rip, Rip, RIp, RIP;
       
         // create the rooms
         outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        theater = new Room("in a theater full of old manekins odly placed in every seat.");
+        pub = new Room("in the campus pub. Something feels off here...");
+        lab = new Room("in a computing lab. Nothing odd here. ");
+        office = new Room("in the  admin office. Theres blood everywhere! WHat the hell happened here?!");
         pond = new Room("near a pond behind the building");
+        pathway = new Room("on an eerie looking pathway surrounded by trees");
+        garden = new Room("on the universities garden. You feel safe here.");
+        further = new Room("further down the path. Something doesnt feel right. Maybe turn around?");
+        rip = new Room("Somethings off. You cant seem to stop going forward.");
+        Rip = new Room("no longer in control of your body.");
+        RIp = new Room("no longer in control.");
+        RIP = new Room("dead");
+        
         
         // initialise room exits
         outside.setExit("east", theater);
@@ -61,6 +70,21 @@ public class Game
         office.setExit("west", lab);
         
         pond.setExit("south", outside);
+        pond.setExit("north", pathway);
+        pond.setExit("east", garden);
+        
+        garden.setExit("west", pond);
+        
+        pathway.setExit("south", pond);
+        pathway.setExit("north", further);
+        
+        further.setExit("north", rip);
+        
+        rip.setExit("north", Rip);
+        
+        Rip.setExit("north", RIp);
+        
+        RIp.setExit("north", RIP);
 
         currentRoom = outside;  // start game outside
     }
