@@ -59,6 +59,8 @@ public class Game
         lab.setExit("east", office);
 
         office.setExit("west", lab);
+        
+        pond.setExit("south", outside);
 
         currentRoom = outside;  // start game outside
     }
@@ -78,7 +80,7 @@ public class Game
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
-        System.out.println("Thank you for playing.  Good bye.");
+        System.out.println("Thank you for playing.  Adios!");
     }
 
     /**
@@ -88,7 +90,7 @@ public class Game
     {
         System.out.println();
         System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+        System.out.println("World of Zuul is a new, incredibly exciting adventure game.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
