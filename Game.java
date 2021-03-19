@@ -1,3 +1,4 @@
+
 /**
  *  This class is the main class of the "World of Zuul" application. 
  *  "World of Zuul" is a very simple, text based adventure game.  Users 
@@ -15,10 +16,11 @@
  * @version 2020.03.10
  */
 
-public class Game 
-{
+    public class Game 
+    {
     private Parser parser;
     private Room currentRoom;
+    private Item roomItem;
     private Player player;
         
     /**
@@ -30,28 +32,47 @@ public class Game
         parser = new Parser();
     }
     
-    /**
-     * Create all the rooms and link their exits together.
+     /**
+     * Create all the rooms and link their exits together. Along with each 
+      rooms item
      */
     private void createRooms()
     {
         Room outside, theater, pub, lab, office, pond, garden, 
         pathway, further, rip, Rip, RIp, RIP;
-      
+        
+        Item baseball, pocketwatch, lamp, ciggarate, guitar, bat, book,
+        knife, sword, ladder, coin, note, lighter, pencil;
+        
+        // create items
+        baseball = new Item("a brand new baseball signed BR " , 1 , "baseball" );
+        pocketwatch = new Item(" an antique pocketwatch made of pure gold", 2 ,"pocketwatch");
+        book = new Item("Thick history book. Almost like it was left on porpuse", 5 , "book" );
+        ciggarate = new Item("unused ciggarate. All you need now is a lighter" , 1, "ciggarate");
+        guitar = new Item(" Rusty guitar. Looks like someone ripped all the strings..", 8, "guitar");
+        bat = new Item(" A brand new bat signed Negan" , 2, "bat");
+        sword = new Item(" medival sword. Maybe it can come in handy." , 10, "sword");
+        ladder = new Item(" short ladder. feels pountless carrying this arround." ,20, "ladder");
+        knife = new Item(" a butter knife... WHat am i suposed to do with this?" ,1, "knife");
+        coin = new Item(" a gold coin with a picture of a doge engraved in it. Very valuable" ,5, "coin");
+        pencil = new Item(" a diamond pencil covered in blood. I wonder why?", 2, "pencil");
+        lighter = new Item(" an old lighter. Maybe you can light your way to safety.." , 1, "lighter");
+        note = new Item(" the note states: Thanks for playing! You found the sad ending :(... try again?", 0, "note");
+        
         // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a theater full of old manekins odly placed in every seat.");
-        pub = new Room("in the campus pub. Something feels off here...");
-        lab = new Room("in a computing lab. Nothing odd here. ");
-        office = new Room("in the  admin office. Theres blood everywhere! WHat the hell happened here?!");
-        pond = new Room("near a pond behind the building");
-        pathway = new Room("on an eerie looking pathway surrounded by trees");
-        garden = new Room("on the universities garden. You feel safe here.");
-        further = new Room("further down the path. Something doesnt feel right. Maybe turn around?");
-        rip = new Room("Somethings off. You cant seem to stop going forward.");
-        Rip = new Room("no longer in control of your body.");
-        RIp = new Room("no longer in control.");
-        RIP = new Room("dead");
+        outside = new Room("outside the main entrance of the university", baseball);
+        theater = new Room("in a theater full of old manekins odly placed in every seat.", pocketwatch);
+        pub = new Room("in the campus pub. Something feels off here...", book);
+        lab = new Room("in a computing lab. Nothing odd here. ", ciggarate);
+        office = new Room("in the  admin office. Theres blood everywhere! WHat the hell happened here?!", guitar);
+        pond = new Room("near a pond behind the building", bat);
+        pathway = new Room("on an eerie looking pathway surrounded by trees", sword);
+        garden = new Room("on the universities garden. You feel safe here.",ladder);
+        further = new Room("further down the path. Something doesnt feel right. Maybe turn around?", knife);
+        rip = new Room("Somethings off. You cant seem to stop going forward.", coin);
+        Rip = new Room("no longer in control of your body.", pencil);
+        RIp = new Room("no longer in control.", lighter);
+        RIP = new Room("dead", note);
         
         
         // initialise room exits
@@ -145,6 +166,14 @@ public class Game
     }
     
     /**
+     * command word to check players picked up items
+     */
+    private void check()
+    {
+        System.out.println();
+    }
+    
+    /**
      * Given a command, process (that is: execute) the command.
      * @param command The command to be processed.
      * @return true If the command ends the game, false otherwise.
@@ -196,7 +225,7 @@ public class Game
      */
     private void printHelp() 
     {
-        System.out.println("You are lost. You are alone. You wander");
+        System.out.println("You are lost. Alone in a place you've never been in You wander");
         System.out.println("around at the university.");
         System.out.println();
         System.out.println("Your command words are:");
