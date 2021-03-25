@@ -1,4 +1,3 @@
-
 /**
  *  This class is the main class of the "World of Zuul" application. 
  *  "World of Zuul" is a very simple, text based adventure game.  Users 
@@ -22,6 +21,7 @@
     private Room currentRoom;
     private Item roomItem;
     private Player player;
+    private Timer timer;
         
     /**
      * Create the game and initialise its internal map.
@@ -30,6 +30,7 @@
     {
         createRooms();
         parser = new Parser();
+        timer= new Timer (600, -1 , 5);
     }
     
      /**
@@ -139,6 +140,7 @@
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
+        System.out.println("You have "+timer+"s to win.");
     }
     
     /** 
@@ -181,12 +183,13 @@
     private boolean processCommand(Command command) 
     {
         boolean wantToQuit = false;
-
+        boolean updateTimer = true;
         CommandWord commandWord = command.getCommandWord();
 
         switch (commandWord) {
             case UNKNOWN:
                 System.out.println("I don't know what you mean...");
+                updateTimer = false;
                 break;
 
             case HELP:
@@ -211,7 +214,23 @@
                   
             case QUIT:
                 wantToQuit = quit(command);
+                updateTimer = false;
                 break;
+                
+            case TIME:
+            System.out.println("You have "+timer+"s left...");
+            break;
+        }
+        //This will be used to notify the player.
+        if (updateTimer) {
+            timer.updateTimer();
+            if (timer.hasExpired()) {
+                System.out.println("Time's up - you lost!");
+                wantToQuit = true;
+            } else if (timer.isLow()) {
+                System.out.println("Time is running low!");
+                System.out.println("You have "+timer+"s left...");
+            }
         }
         return wantToQuit;
     }
@@ -228,6 +247,7 @@
         System.out.println("You are lost. Alone in a place you've never been in You wander");
         System.out.println("around at the university.");
         System.out.println();
+        System.out.println("You have:" +timer+ "s left");
         System.out.println("Your command words are:");
         parser.showCommands();
     }
