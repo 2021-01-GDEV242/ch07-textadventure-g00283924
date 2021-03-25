@@ -12,7 +12,7 @@
  *  executes the commands that the parser returns.
  * 
  * @author  Joan Amaury rosario
- * @version 2020.03.10
+ * @version 2020.03.20
  */
 
     public class Game 
@@ -148,7 +148,7 @@
      */
     private void take()
     {
-       System.out.println("You have picked up an Item."); 
+       System.out.println("You have picked up an item"); 
     }
 
     /** 

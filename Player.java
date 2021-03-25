@@ -1,9 +1,8 @@
-
 /**
  * Write a description of class Player here.
  *
  * @author  Joan Amaury rosario
- * @version 2020.03.10
+ * @version 2020.03.20
  */
 public class Player
 {
@@ -23,7 +22,7 @@ public class Player
         playerWeight = 10;
     }
 
-      /**
+     /**
      *A method to return the players name
      */
     public String getPlayerName()
@@ -31,7 +30,7 @@ public class Player
         return playerName;
     }
  
-   /**
+    /**
     * A method to return the weight of the player 
     */
     public double getPlayerWeight()
