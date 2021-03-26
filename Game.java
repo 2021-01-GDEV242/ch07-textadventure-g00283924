@@ -18,7 +18,7 @@
     public class Game 
     {
     private Parser parser;
-    private Room currentRoom;
+    private Room currentRoom , prevRoom;
     private Item roomItem;
     private Player player;
     private Timer timer;
@@ -30,10 +30,11 @@
     {
         createRooms();
         parser = new Parser();
+        prevRoom = currentRoom;
         timer= new Timer (600, -1 , 5);
     }
     
-     /**
+    /**
      * Create all the rooms and link their exits together. Along with each 
       rooms item
      */
@@ -195,10 +196,14 @@
             case HELP:
                 printHelp();
                 break;
-
+ 
             case GO:
                 goRoom(command);
                 break;
+                
+            case BACK:
+                goBack(command);
+                break;   
                 
             case LOOK:
                 look();
@@ -236,7 +241,7 @@
     }
 
     // implementations of user commands:
-
+    
     /**
      * Print out some help information.
      * Here we print some stupid, cryptic message and a list of the 
@@ -246,8 +251,8 @@
     {
         System.out.println("You are lost. Alone in a place you've never been in You wander");
         System.out.println("around at the university.");
-        System.out.println();
         System.out.println("You have:" +timer+ "s left");
+        System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();
     }
@@ -277,7 +282,22 @@
             System.out.println(currentRoom.getLongDescription());
         }
     }
-
+    
+/**
+     * go back method
+     */
+    private void goBack(Command command)
+    {
+        if(!prevRoom.equals(currentRoom))
+        {
+            //go back to the previous room.
+            currentRoom = prevRoom;
+            System.out.println(currentRoom.getLongDescription());
+        }
+        else
+            System.out.println("You cannot go back any farther.");
+    }
+    
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.

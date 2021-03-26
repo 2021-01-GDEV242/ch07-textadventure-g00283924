@@ -8,7 +8,7 @@ public class Player
 {
     // instance variables - replace the example below with your own
     private String playerName;
-    private static int MAXWEIGHT = 100;
+    private static int MAXWEIGHT = 50;
     private double playerWeight;
     private Room currentRoom;
 
